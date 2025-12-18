@@ -1,3 +1,32 @@
 * {
-    background-color: blue;
+    background-color: grey;
+    box-sizing: border-box;
 }
+
+.pixel-container {
+    width: 90vh;
+    height: 90vh;
+    margin: auto;
+    display: flex;
+    border: 12px solid black;
+    border-radius: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.pixel-row {
+    display: flex;
+    flex-basis: 90vh;
+}
+
+.pixel {
+    background-color: white;
+    border: 0.5px dashed grey;
+    flex-basis: 90vh;
+}
+
+.hover {
+    background-color: green;
+}
+
