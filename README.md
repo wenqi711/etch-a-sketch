@@ -1,4 +1,4 @@
-# etch-a-sketch
+# TOP Project #4
 
 ## Pseudocode
 
@@ -30,4 +30,21 @@ GET pixelList as the list of items with class .pixel
 FOR item of pixelList
     ADD eventListener for mouseOver so item has class .hover
 ENDFOR
+```
+
+### Create a new grid
+
+To create a new grid, we would need to remove all the `.pixel-row` and `.pixel` div elements in our pixel container. We then need to follow the same procedure as above. We can easily do this by creating a function for setting up a grid, which takes a parameter as the number of pixels per side. We need to set hard limits for the input so that the user can only input an integer between 3 and 100. This should leave the grid as is if the user leaves the input blank or enters a string.
+
+I'm going to experiment with creating a slider for this once I'm otherwise done with the project. This should automatically restrict the numbers that the user can select.
+
+```
+GET userSelection and change to Number
+IF userSelection > 2 AND userSelection < 101 AND userSelection is an integer THEN
+    SET numOfPixelsPerSide to userSelection
+    REMOVE all div elements with class .pixel-row
+    REMOVE all div elements with class .pixel
+    CALL FUNCTION setUpGrid(numOfPixelsPerSide)
+ELSE
+    DISPLAY "This is not a valid input. Please select a number between 3 and 100."
 ```
