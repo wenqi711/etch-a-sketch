@@ -11,3 +11,10 @@ for (let i = 0; i < numOfPixelsPerSide; i++) {
         pixelRow.append(pixel);
     }
 }
+
+const pixelList = document.querySelectorAll(".pixel");
+for (let i = 0; i < pixelList.length; i++) {
+    pixelList[i].addEventListener("mouseenter", () => {
+        pixelList[i].classList.add("hover");
+    });
+}
