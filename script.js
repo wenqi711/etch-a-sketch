@@ -38,3 +38,10 @@ newGridButton.addEventListener("click", function () {
         alert("This is not a valid input. Please select a number between 3 and 100.");
     }
 })
+
+const clearButton = document.createElement("button");
+clearButton.textContent = "Clear Grid";
+buttonContainer.appendChild(clearButton);
+clearButton.addEventListener("click", function() {
+    document.querySelectorAll(".hover").forEach( (node) => node.classList.remove("hover"));
+});
