@@ -22,11 +22,7 @@ function setUpGrid(num) {
     }
 }
 
-const buttonContainer = document.querySelector(".button-container");
-
-const newGridButton = document.createElement("button");
-newGridButton.textContent = "New Grid";
-buttonContainer.appendChild(newGridButton);
+const newGridButton = document.querySelector(".new-grid-button");
 newGridButton.addEventListener("click", function () {
     const userSelection = +(prompt("Enter a number between 3 and 100:", ""));
     if (userSelection > 2 && userSelection < 101 && Math.floor(userSelection) === userSelection) {
@@ -39,9 +35,7 @@ newGridButton.addEventListener("click", function () {
     }
 })
 
-const clearButton = document.createElement("button");
-clearButton.textContent = "Clear Grid";
-buttonContainer.appendChild(clearButton);
+const clearButton = document.querySelector(".clear-button");
 clearButton.addEventListener("click", function() {
     document.querySelectorAll(".hover").forEach( (node) => node.classList.remove("hover"));
 });
