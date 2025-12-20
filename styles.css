@@ -19,7 +19,6 @@ button {
     flex: 1 10vw;
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
     align-content: flex-start;
     gap: 8px;
     border: 1px solid red;
@@ -47,9 +46,5 @@ button {
     background-color: #F6F3C2;
     border: 0.5px dashed #91C6BC;
     flex-basis: 90vh;
-}
-
-.hover {
-    background-color: #4B9DA9;
 }
 

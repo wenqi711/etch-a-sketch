@@ -56,5 +56,6 @@ SET HEXDIGITS = '0123456789ABCDEF'
 SET color = '#'
 FOR i from 0 to 6
     ADD HEXDIGITS[randomNumber between 0 and 15] to color
-RETURN color
+ENDFOR
+DISPLAY color
 ```
