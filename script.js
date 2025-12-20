@@ -13,12 +13,21 @@ function setUpGrid(num) {
             pixelRow.appendChild(pixel);
         }
     }
+    draw();
+}
 
+function draw() {
     const pixelList = document.querySelectorAll(".pixel");
     for (let i = 0; i < pixelList.length; i++) {
         pixelList[i].addEventListener("mouseenter", () => {
             pixelList[i].classList.add("hover");
-            pixelList[i].setAttribute("style", "background-color: #4B9DA9;");
+            if (isRandom) {
+                pixelList[i].setAttribute("style", `background-color: ${getRandomColor()};`);
+            }
+
+            else{
+                pixelList[i].setAttribute("style", "background-color: #4B9DA9;");
+            }
         });
     }
 }
@@ -38,7 +47,10 @@ newGridButton.addEventListener("click", function () {
 
 const clearButton = document.querySelector(".clear-button");
 clearButton.addEventListener("click", function() {
-    document.querySelectorAll(".hover").forEach( (node) => node.classList.remove("hover"));
+    document.querySelectorAll(".hover").forEach( (pixel) => {
+        pixel.classList.remove("hover");
+        pixel.setAttribute("style", "background-color: #F6F3C2")
+    });
 });
 
 function getRandomColor() {
@@ -55,10 +67,11 @@ let isRandom = false;
 const randomizeButton = document.querySelector(".randomize-button");
 randomizeButton.addEventListener("click", function() {
     isRandom = !isRandom;
-    const pixelList = document.querySelectorAll(".pixel");
-    for (let i = 0; i < pixelList.length; i++) {
-        pixelList[i].addEventListener("mouseenter", () => {
-            pixelList[i].setAttribute("style", `background-color: ${getRandomColor()};`);
-        });
+    if (isRandom) {
+        randomizeButton.setAttribute("style", "background-color: #4B9DA9;")
     }
+    else {
+        randomizeButton.setAttribute("style", "background-color: #E37434;")
+    }
+    draw();
 })
