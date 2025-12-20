@@ -34,14 +34,20 @@ function draw() {
 
 const newGridButton = document.querySelector(".new-grid-button");
 newGridButton.addEventListener("click", function () {
-    const userSelection = +(prompt("Enter a number between 3 and 100:", ""));
-    if (userSelection > 2 && userSelection < 101 && Math.floor(userSelection) === userSelection) {
+    let userSelection = +(prompt("Enter a number between 3 and 100:", ""));
+    console.log(userSelection);
+    while (isNaN(userSelection) || userSelection < 3 
+    || userSelection > 100 || Math.floor(userSelection) !== userSelection) {
+        if (userSelection === 0) { break; }
+        alert("This is not a valid input. Please select a number between 3 and 100.");
+        userSelection = +(prompt("Enter a number between 3 and 100:", ""));
+        console.log(userSelection);
+    }
+    if (userSelection !== 0) {
         numOfPixelsPerSide = userSelection;
         document.querySelectorAll(".pixel-row").forEach(e => e.remove());
         document.querySelectorAll(".pixel").forEach(e => e.remove());
         setUpGrid(numOfPixelsPerSide);
-    } else {
-        alert("This is not a valid input. Please select a number between 3 and 100.");
     }
 })
 
