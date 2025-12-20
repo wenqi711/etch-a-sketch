@@ -48,3 +48,13 @@ IF userSelection > 2 AND userSelection < 101 AND userSelection is an integer THE
 ELSE
     DISPLAY "This is not a valid input. Please select a number between 3 and 100."
 ```
+
+### Get random colours
+
+```
+SET HEXDIGITS = '0123456789ABCDEF'
+SET color = '#'
+FOR i from 0 to 6
+    ADD HEXDIGITS[randomNumber between 0 and 15] to color
+RETURN color
+```
