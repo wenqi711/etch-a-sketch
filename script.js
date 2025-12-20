@@ -1,5 +1,6 @@
 const pixelContainer = document.querySelector(".pixel-container");
 let numOfPixelsPerSide = 16;
+const colorPicker = document.querySelector("#color-picker");
 setUpGrid(numOfPixelsPerSide);
 
 function setUpGrid(num) {
@@ -20,13 +21,13 @@ function draw() {
     const pixelList = document.querySelectorAll(".pixel");
     for (let i = 0; i < pixelList.length; i++) {
         pixelList[i].addEventListener("mouseenter", () => {
-            pixelList[i].classList.add("hover");
+            pixelList[i].classList.add("colored");
             if (isRandom) {
                 pixelList[i].setAttribute("style", `background-color: ${getRandomColor()};`);
             }
 
             else{
-                pixelList[i].setAttribute("style", "background-color: #4B9DA9;");
+                pixelList[i].setAttribute("style", `background-color: ${colorPicker.value};`);
             }
         });
     }
@@ -53,8 +54,8 @@ newGridButton.addEventListener("click", function () {
 
 const clearButton = document.querySelector(".clear-button");
 clearButton.addEventListener("click", function() {
-    document.querySelectorAll(".hover").forEach( (pixel) => {
-        pixel.classList.remove("hover");
+    document.querySelectorAll(".colored").forEach( (pixel) => {
+        pixel.classList.remove("colored");
         pixel.setAttribute("style", "background-color: #F6F3C2")
     });
 });
@@ -77,6 +78,14 @@ randomizeButton.addEventListener("click", function() {
         randomizeButton.setAttribute("style", "background-color: #4B9DA9;")
     }
     else {
+        randomizeButton.setAttribute("style", "background-color: #E37434;")
+    }
+    draw();
+})
+
+colorPicker.addEventListener("click", () => {
+    if (isRandom) {
+        isRandom = !isRandom;
         randomizeButton.setAttribute("style", "background-color: #E37434;")
     }
     draw();
