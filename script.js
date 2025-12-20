@@ -18,19 +18,16 @@ function setUpGrid(num) {
 }
 
 function draw() {
-    const pixelList = document.querySelectorAll(".pixel");
-    for (let i = 0; i < pixelList.length; i++) {
-        pixelList[i].addEventListener("mouseenter", () => {
-            pixelList[i].classList.add("colored");
+    document.querySelectorAll(".pixel").forEach((pixel) => {
+        pixel.addEventListener("mouseenter", () => {
+            pixel.classList.add("colored");
             if (isRandom) {
-                pixelList[i].setAttribute("style", `background-color: ${getRandomColor()};`);
+                pixel.style.backgroundColor = getRandomColor();
+            } else {
+                pixel.style.backgroundColor = colorPicker.value;
             }
-
-            else{
-                pixelList[i].setAttribute("style", `background-color: ${colorPicker.value};`);
-            }
-        });
-    }
+        })
+    })
 }
 
 const newGridButton = document.querySelector(".new-grid-button");
@@ -56,7 +53,7 @@ const clearButton = document.querySelector(".clear-button");
 clearButton.addEventListener("click", function() {
     document.querySelectorAll(".colored").forEach( (pixel) => {
         pixel.classList.remove("colored");
-        pixel.setAttribute("style", "background-color: #F6F3C2")
+        pixel.style.backgroundColor = "#F6F3C2";
     });
 });
 
@@ -74,19 +71,30 @@ let isRandom = false;
 const randomizeButton = document.querySelector(".randomize-button");
 randomizeButton.addEventListener("click", function() {
     isRandom = !isRandom;
-    if (isRandom) {
-        randomizeButton.setAttribute("style", "background-color: #4B9DA9;")
-    }
-    else {
-        randomizeButton.setAttribute("style", "background-color: #E37434;")
-    }
+    randomizeButton.classList.toggle("is-clicked");
     draw();
 })
 
 colorPicker.addEventListener("click", () => {
     if (isRandom) {
         isRandom = !isRandom;
-        randomizeButton.setAttribute("style", "background-color: #E37434;")
+        randomizeButton.classList.remove("is-clicked");
     }
     draw();
+})
+
+const gridlinesButton = document.querySelector(".gridlines-button");
+let hasGridlines = false;
+gridlinesButton.addEventListener("click", () => {
+    gridlinesButton.classList.toggle("is-clicked");
+    hasGridlines = !hasGridlines;
+    document.querySelectorAll(".pixel").forEach((pixel) => {
+        if (hasGridlines) {
+            gridlinesButton.textContent = "Hide gridlines";
+            pixel.style.border = "0.5px dashed #91C6BC";
+        } else {
+            gridlinesButton.textContent = "Show gridlines";
+            pixel.style.border = "none";
+        }
+    });
 })
