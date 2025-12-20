@@ -1,5 +1,6 @@
 const pixelContainer = document.querySelector(".pixel-container");
 let numOfPixelsPerSide = 16;
+let hasGridlines = false;
 const colorPicker = document.querySelector("#color-picker");
 setUpGrid(numOfPixelsPerSide);
 
@@ -12,6 +13,9 @@ function setUpGrid(num) {
             const pixel = document.createElement("div");
             pixel.classList.add("pixel");
             pixelRow.appendChild(pixel);
+            if (hasGridlines) {
+                pixel.style.border = "0.5px dashed #91C6BC";
+            }
         }
     }
     draw();
@@ -66,7 +70,6 @@ function getRandomColor() {
     return color;
 }
 
-console.log(getRandomColor())
 let isRandom = false;
 const randomizeButton = document.querySelector(".randomize-button");
 randomizeButton.addEventListener("click", function() {
@@ -84,7 +87,6 @@ colorPicker.addEventListener("click", () => {
 })
 
 const gridlinesButton = document.querySelector(".gridlines-button");
-let hasGridlines = false;
 gridlinesButton.addEventListener("click", () => {
     gridlinesButton.classList.toggle("is-clicked");
     hasGridlines = !hasGridlines;
