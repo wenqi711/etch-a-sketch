@@ -27,8 +27,9 @@ We want to set up an event listener for when the mouse moves into each 'pixel'. 
 
 ```
 GET pixelList as the list of items with class .pixel
-FOR item of pixelList
-    ADD eventListener for mouseOver so item has class .hover
+FOR pixel of pixelList
+    ADD eventListener for mouseEnter so we
+        SET pixel background color to '#4B9DA9'
 ENDFOR
 ```
 
@@ -58,4 +59,21 @@ FOR i from 0 to 6
     ADD HEXDIGITS[randomNumber between 0 and 15] to color
 ENDFOR
 DISPLAY color
+```
+
+### Change opacity
+
+To change the opacity of the background per hover, we change the opacity of the color that we use. We can do this when we set up the "hover" effect.
+
+```
+SET isGradientMode to FALSE
+GET pixelList as the list of items with class .pixel
+FOR pixel of pixelList
+    ADD eventListener for mouseEnter so we
+        SET pixel background color to '#4B9DA9'
+        GET currentOpacity of the pixel
+        IF isGradientMode is TRUE AND currentOpacity < 1 THEN
+            INCREASE currentOpacity by 0.1 and set to pixel style
+        ENDIF
+ENDFOR
 ```
