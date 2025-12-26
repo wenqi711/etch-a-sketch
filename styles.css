@@ -52,6 +52,14 @@ button {
 
 .pixel {
     flex-basis: 90vh;
+    display: flex;
+    align-items: stretch;
+}
+
+.pixel-content {
+    background-color: transparent;
+    flex: 1;
+    opacity: 0;
 }
 
 .is-clicked {
